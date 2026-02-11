@@ -36,30 +36,81 @@ body {
     z-index: -1; pointer-events: none;
 }
 
-/* =========================================
-   2. HEADER & NAV
-   ========================================= */
+/* ================= HEADER & NAV (STYLE FLOTTANT CENTRÉ) ================= */
 header {
-    position: fixed; top: 0; left: 0; width: 100%;
-    padding: 20px 10%;
-    display: flex; justify-content: center; align-items: center;
-    z-index: 1000; height: var(--nav-height);
-    background: rgba(5, 5, 5, 0.7);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: fixed;
+    top: 20px; /* Décalé du haut pour l'effet flottant */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centre la barre horizontalement */
+    z-index: 1000;
+    pointer-events: none; /* Permet de cliquer à travers les zones vides */
+    background: transparent; /* Pas de fond global */
+    border: none;
+    padding: 0;
 }
 
-nav { display: flex; gap: 40px; }
-nav a { font-size: 16px; color: var(--text-muted); font-weight: 500; transition: 0.3s; position: relative; }
-nav a:hover, nav a.active { color: #fff; }
-nav a.active::after {
-    content: ''; position: absolute; width: 6px; height: 6px;
-    background: var(--primary); border-radius: 50%;
-    bottom: -10px; left: 50%; transform: translateX(-50%);
-    box-shadow: 0 0 10px var(--primary);
+/* La "Pilule" de navigation */
+.floating-nav {
+    pointer-events: auto; /* Réactive les clics sur la barre elle-même */
+    display: flex;
+    gap: 10px; /* Espace entre les boutons */
+    background: rgba(15, 23, 42, 0.6); /* Fond sombre semi-transparent */
+    backdrop-filter: blur(15px); /* Effet de flou derrière */
+    -webkit-backdrop-filter: blur(15px);
+    padding: 10px 15px;
+    border-radius: 50px; /* Forme de pilule très arrondie */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Bordure subtile */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Ombre portée */
+    transition: transform 0.3s ease;
 }
-.menu-toggle { display: none; font-size: 24px; color: var(--text-main); cursor: pointer; position: fixed; right: 20px; top: 25px; z-index: 1002; }
 
+/* Les liens (Boutons) */
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link i {
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+/* Effet Hover & Active */
+.nav-link:hover, 
+.nav-link.active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1); /* Fond blanc léger au survol */
+}
+
+.nav-link.active {
+    background: var(--primary); /* Fond violet pour l'actif */
+    color: #fff;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+}
+
+/* Optionnel : Masquer le texte sur mobile pour gagner de la place */
+@media (max-width: 768px) {
+    header { top: auto; bottom: 20px; } /* Barre en bas sur mobile (style app) */
+    .floating-nav { 
+        padding: 10px 20px; 
+        gap: 5px;
+        background: rgba(15, 23, 42, 0.9); /* Plus opaque sur mobile */
+    }
+    .nav-link span { display: none; } /* On cache le texte */
+    .nav-link { padding: 12px 15px; } /* On garde juste les icônes */
+    .nav-link i { font-size: 20px; }
+}
 /* =========================================
    3. SECTIONS
    ========================================= */
@@ -205,12 +256,320 @@ section { min-height: 100vh; position: relative; padding-top: 100px; }
 }
 .reveal-up.visible { opacity: 1 !important; transform: translateY(0) !important; }
 
+/* =========================================
+   INTRO SCREEN (VERSION FINALE : BRAS LEVÉS)
+   ========================================= */
+#intro-screen {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #1e293b 0%, #020617 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    overflow: hidden;
+}
+
+.walker-container {
+    position: relative;
+    /* Le personnage arrive de la gauche et s'arrête au centre */
+    animation: walk-in 2.5s ease-out forwards;
+}
+
+/* --- LE PERSONNAGE GLOBAL --- */
+.intro-character.sign-holder {
+    width: 140px;
+    height: 220px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* On le descend un peu pour compenser la hauteur des bras levés */
+    margin-top: 50px; 
+}
+
+/* --- LA PANCARTE (STRUCTURE GLOBALE) --- */
+.sign-structure {
+    position: absolute;
+    /* Positionnée au-dessus de la tête */
+    top: -130px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10; 
+    /* Animation de flottement */
+    animation: sign-float 2s ease-in-out infinite 2.5s;
+}
+
+/* LE PANNEAU (BOUTON) */
+.sign-board {
+    background: var(--primary); /* Couleur violette */
+    color: #fff;
+    padding: 12px 30px;
+    border: 3px solid #fff;
+    border-radius: 50px; /* Bord arrondi */
+    font-size: 20px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    transition: 0.3s;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 10px;
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+}
+
+.sign-board:hover {
+    background: var(--secondary);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--primary);
+}
+
+
+
+/* --- CORPS & TÊTE --- */
+
+/* Tête (RONDE) */
+.sign-holder .head {
+    width: 80px;
+    height: 80px;
+    background: #f3f4f6; /* Couleur peau */
+    border-radius: 50%; /* Tête parfaitement ronde */
+    position: absolute;
+    top: 0;
+    z-index: 5; /* Derrière la tige */
+    box-shadow: inset -5px -5px 15px rgba(0,0,0,0.1);
+}
+
+/* Visage */
+.sign-holder .face {
+    position: relative; top: 25px;
+    display: flex; flex-direction: column; align-items: center;
+}
+.sign-holder .eyes { display: flex; gap: 14px; }
+.sign-holder .eye {
+    width: 10px; height: 10px; background: #1f2937; border-radius: 50%;
+    animation: blink 4s infinite;
+}
+/* Sourire */
+.sign-holder .mouth-smile {
+    width: 16px; height: 8px;
+    border-bottom: 3px solid #1f2937;
+    border-radius: 0 0 10px 10px;
+    margin-top: 5px;
+}
+
+/* Corps */
+.sign-holder .body-shape {
+    width: 80px; height: 100px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 30px;
+    position: absolute;
+    top: 75px; /* Ajusté sous la tête */
+    z-index: 4;
+}
+
+/* --- BRAS LEVÉS (CHANGEMENTS MAJEURS ICI) --- */
+.sign-holder .arm {
+    width: 20px; height: 65px;
+    background: var(--secondary);
+    position: absolute;
+    border-radius: 10px;
+    /* Position de départ aux épaules */
+    top: 80px; 
+    /* Au premier plan, devant la tige */
+    z-index: 7; 
+    transform-origin: top center; /* Pivote depuis l'épaule */
+}
+
+/* Bras gauche LEVÉ */
+.arm-left-up {
+    left: 15px;
+    /* Rotation vers le haut et la droite pour tenir la tige */
+    transform: rotate(155deg); 
+}
+
+/* Bras droit LEVÉ */
+.arm-right-up {
+    right: 15px;
+    /* Rotation vers le haut et la gauche pour tenir la tige */
+    transform: rotate(-155deg);
+}
+
+/* Les mains (bouts des bras) */
+.sign-holder .arm::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 18px; background: #f3f4f6;
+    border-radius: 5px 5px 10px 10px; /* Forme de main/moufle */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* Ombre inversée car le bras est retourné */
+}
+
+/* --- JAMBES (Animation de marche) --- */
+.sign-holder .leg {
+    width: 22px; height: 60px;
+    background: #0f172a; /* Pantalon foncé */
+    border-radius: 10px;
+    position: absolute;
+    bottom: -10px; /* Ajusté par rapport au corps */
+    z-index: 3;
+    transform-origin: top center;
+}
+/* Animation de marche qui s'arrête après 5 pas (2.5s) */
+.leg-left { left: 40px; animation: leg-walk 0.5s infinite alternate; animation-iteration-count: 5; }
+.leg-right { right: 40px; animation: leg-walk 0.5s infinite alternate-reverse; animation-iteration-count: 5; }
+
+/* --- ANIMATIONS --- */
+@keyframes walk-in {
+    0% { transform: translateX(-150vw); } /* Part de loin à gauche */
+    80% { transform: translateX(10px); } /* Petit dépassement */
+    100% { transform: translateX(0); } /* S'arrête au centre */
+}
+@keyframes sign-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+@keyframes blink {
+    0%, 90%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+}
+@keyframes leg-walk {
+    from { transform: rotate(15deg); }
+    to { transform: rotate(-15deg); }
+}
+/* Animation de sortie (vers le haut) au clic */
+@keyframes intro-exit {
+    to { transform: translateY(-100vh); opacity: 0; }
+}
+#intro-screen.hide {
+    animation: intro-exit 0.8s ease-in forwards;
+}
+
+/* =========================================
+   SECTION CONTACT (NOUVEAU STYLE)
+   ========================================= */
+.contact-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-content {
+    flex: 1;
+    text-align: left; /* Texte aligné à gauche */
+}
+
+.contact-content h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.contact-content p {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.contact-img-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Petit effet de halo derrière l'animation */
+    position: relative;
+}
+.contact-img-container::before {
+    content: ''; position: absolute; width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+    filter: blur(30px); z-index: -1;
+}
+
+#lottie-contact {
+    width: 100%;
+    max-width: 400px; /* Taille de l'animation */
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+}
+
+/* Style du bouton Hamburger */
+.menu-toggle {
+    display: none; /* Caché par défaut sur PC */
+    position: fixed; /* C'est cette ligne qui le garde à l'écran */
+    top: 20px;
+    right: 20px;
+    z-index: 2000; /* Très élevé pour être au-dessus du menu ouvert et des animations */
+    
+    /* Esthétique du bouton */
+    width: 50px;
+    height: 50px;
+    background: rgba(15, 23, 42, 0.9); /* Fond sombre semi-transparent */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%; /* Cercle parfait */
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: 0.3s ease;
+    
+    /* Centrage de l'icône */
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.menu-toggle:hover {
+    background: var(--primary);
+    transform: scale(1.1);
+}
+
+/* --- Responsive pour le contact --- */
+@media (max-width: 991px) {
+    .contact-container {
+        flex-direction: column-reverse; /* L'image passe au-dessus ou en dessous selon préférence */
+        text-align: center;
+    }
+    .contact-content {
+        text-align: center;
+    }
+}
 /* Mobile */
 @media (max-width: 991px) {
-    header { padding: 20px 5%; justify-content: space-between; }
-    .accueil { padding: 100px 5% 50px; flex-direction: column-reverse; text-align: center; }
+    header { 
+        padding: 20px 5%; 
+        justify-content: space-between; 
+        /* On désactive les événements sur le header pour pouvoir cliquer sur le bouton */
+        pointer-events: none; 
+    }
+    
+    .accueil { 
+        padding: 100px 5% 50px; 
+        flex-direction: column-reverse; 
+        text-align: center; 
+    }
+    
     .accueil-contenue { max-width: 100%; }
-    .menu-toggle { display: block; }
-    nav { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: rgba(5,5,5,0.98); flex-direction: column; justify-content: center; align-items: center; transition: 0.4s ease; }
+    
+    /* MODIFICATION ICI : On passe en flex pour centrer l'icône */
+    .menu-toggle { 
+        display: flex; 
+        pointer-events: auto; /* Réactive le clic sur le bouton */
+    } 
+    
+    nav { 
+        position: fixed; 
+        top: 0; 
+        right: -100%; 
+        width: 100%; 
+        height: 100vh; 
+        background: rgba(5,5,5,0.98); 
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
+        transition: 0.4s ease; 
+        z-index: 1500; /* Juste en dessous du bouton qui est à 2000 */
+        pointer-events: auto;
+    }
+    
     nav.open { right: 0; }
 }
