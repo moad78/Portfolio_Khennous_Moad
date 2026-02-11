@@ -172,4 +172,52 @@ setTimeout(() => {
         }, { threshold: 0.2 });
         observerSkills.observe(skillSection);
     }
+
+    // --- 8. INTRO SCREEN ANIMATION (VERSION PANCARTE) ---
+    const introScreen = document.getElementById('intro-screen');
+    // On cible le nouveau bouton "pancarte"
+    const signBtn = document.getElementById('sign-btn'); 
+
+    if (introScreen && signBtn) {
+        // Empêche le scroll au début
+        document.body.style.overflow = 'hidden';
+
+        // Au clic sur la pancarte
+        signBtn.addEventListener('click', () => {
+            // Animation de sortie
+            introScreen.classList.add('hide');
+
+            // Réactive le scroll et supprime l'écran après l'animation
+            setTimeout(() => {
+                introScreen.style.display = 'none';
+                document.body.style.overflow = 'auto';
+
+                // Scroll vers l'accueil
+                const accueil = document.getElementById('accueil');
+                if (accueil) {
+                    accueil.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 800); // Correspond à la durée de l'animation CSS (0.8s)
+        });
+    }
+
+    // --- 9. ANIMATION LOTTIE CONTACT (AJOUT) ---
+    const contactLottieContainer = document.getElementById('lottie-contact');
+    
+    // On vérifie que le conteneur existe et qu'il est vide
+    if (contactLottieContainer && contactLottieContainer.innerHTML.trim() === "") {
+        try {
+            lottie.loadAnimation({
+                container: contactLottieContainer, // Le conteneur HTML
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                // Lien vers une animation "Paper Plane" (avion en papier) fiable
+                path: 'https://assets6.lottiefiles.com/packages/lf20_2glqweqs.json' 
+            });
+            console.log("Animation Contact chargée avec succès");
+        } catch(e) { 
+            console.error("Erreur lors du chargement du Lottie Contact :", e); 
+        }
+    }
 });
