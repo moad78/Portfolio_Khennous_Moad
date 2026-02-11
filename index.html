@@ -10,7 +10,39 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
+   <div id="intro-screen">
+    <div class="walker-container">
+        
+        <div class="intro-character sign-holder">
+            
+            <div class="sign-structure">
+                <button id="sign-btn" class="sign-board">
+                    <span>Portfolio - Khennous Moâd</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
 
+            <div class="head">
+                <div class="face">
+                    <div class="eyes">
+                        <span class="eye"></span>
+                        <span class="eye"></span>
+                    </div>
+                    <div class="mouth-smile"></div>
+                </div>
+            </div>
+            
+            <div class="body-shape"></div>
+            
+            <div class="arm arm-left-up"></div>
+            <div class="arm arm-right-up"></div>
+            
+            <div class="leg leg-left"></div>
+            <div class="leg leg-right"></div>
+        </div>
+
+    </div>
+</div>
     <!-- Fond animé -->
     <div class="bg-gradient"></div>
 
@@ -20,11 +52,23 @@
     </div>
     
     <header>
-        <nav>
-            <a href="#accueil" class="active">Accueil</a>
-            <a href="#competences">Compétences</a>
-            <a href="#projets">Projets</a>
-            <a href="#contact">Contact</a>
+        <nav class="floating-nav">
+            <a href="#accueil" class="nav-link active">
+                <i class="fa-solid fa-house"></i>
+                <span>Accueil</span>
+            </a>
+            <a href="#competences" class="nav-link">
+                <i class="fa-solid fa-code"></i>
+                <span>Compétences</span>
+            </a>
+            <a href="#projets" class="nav-link">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Projets</span>
+            </a>
+            <a href="#contact" class="nav-link">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Contact</span>
+            </a>
         </nav>
     </header>
 
@@ -41,8 +85,8 @@
             <div class="reseaux-sociaux-logo">
                 <a href="https://www.linkedin.com/in/moad-khennous-13a757383" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
                 <a href="https://github.com/moad78" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.tiktok.com/@khmoad_78" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="https://www.instagram.com/moad_k78" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@khmoad_?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/moad_k8" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             </div>
             
             <a href="#projets" class="projets-btn">Voir mes réalisations</a>
@@ -210,7 +254,7 @@
                 <div class="project-img">
                     <img src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?auto=format&fit=crop&w=800&q=80" alt="Quiz JS">
                     <div class="overlay">
-                        <a href="Mission6_s1/index.html" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
+                        <a href="Mission8_s1/index.html" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
                     </div>
                 </div>
                 <div class="project-content">
@@ -238,7 +282,7 @@
                 <div class="project-img">
                     <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" alt="Facture JS">
                     <div class="overlay">
-                        <a href="Mission8_s1/index.html" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
+                        <a href="Mission9_s1/index.html" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
                     </div>
                 </div>
                 <div class="project-content">
@@ -297,12 +341,27 @@ Elle explique les principes de protection des données personnelles, les obligat
     </section>
 
     <!-- SECTION CONTACT -->
-    <section id="contact" class="section-padding" style="text-align: center;">
+   <section id="contact" class="section-padding">
         <h2 class="section-title reveal-up">Me <span>Contacter</span></h2>
-        <p class="reveal-up" style="color: var(--text-muted); max-width: 600px; margin: 0 auto 30px;">
-            Vous avez un projet ou une opportunité de stage ? N'hésitez pas à me contacter par email ou via mes réseaux sociaux.
-        </p>
-        <a href="mailto:moadkhennous78@gmail.com" class="projets-btn reveal-up">Envoyer un email</a>
+        
+        <div class="contact-container">
+            <div class="contact-content reveal-up">
+                <h3>Discutons de ton projet !</h3>
+                <p>
+                    Tu as une idée de projet, une proposition de stage ou simplement envie d'échanger sur la tech ? 
+                    N'hésite pas à m'envoyer un message. Je réponds généralement sous 24h.
+                </p>
+                <div class="contact-actions">
+                    <a href="mailto:moadkhennous78@gmail.com" class="projets-btn">
+                        <i class="fa-solid fa-paper-plane"></i> Envoyer un email
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-img-container reveal-up">
+                <div id="lottie-contact"></div>
+            </div>
+        </div>
     </section>
 
     <!-- BOUTON SCROLL TO TOP -->
