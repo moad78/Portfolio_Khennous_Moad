@@ -1,0 +1,179 @@
+/*Khennous Moad */
+
+/* Reset global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f6f6fc;
+    color: #4f4072;
+}
+
+/* Header */
+header {
+    background: linear-gradient(180deg, #8364c1 0%, #9a89d1 50%, #705ca8 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* Menu principal */
+.menu-principal {
+    background-color: #cdcae8;
+    position: sticky;
+    padding: 0.8rem 0;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+/* Masquer les checkbox */
+.menu,.menu-checkbox {
+    display: none;
+}
+
+/* Label du menu (mobile) */
+.menu-label {
+    display: none;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 1rem;
+    background-color: #5f4d8a;
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    transition: background 0.3s ease;
+}
+
+.menu-label:hover {
+    background-color: #7c67b7;
+}
+
+
+
+.liste {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 10px;
+}
+
+
+
+.element {
+    position: relative;
+}
+
+.menu-lien {
+    display: block;
+    padding: 15px 20px;
+    color: #5f4d8a;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.menu-lien:hover {
+    background-color: #9689c9;
+    color: white;
+    transform: translateY(-3px);
+}
+
+
+.sous-menu {
+    list-style: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: #9689c9;
+    min-width: 200px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 3px solid #4f4072;
+}
+
+.element:hover .sous-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+
+.sous-menu li a {
+    display: block;
+    padding: 12px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.sous-menu li a:hover {
+    background-color: #cdcae8;
+    color: #5f4d8a;
+    font-weight: bold;
+}
+
+
+
+/* Responsive  */
+@media (max-width: 680px) {
+
+    .menu-label {
+        display: block;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .liste {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .menu:checked + .menu-label + .liste {
+        display: flex;
+    }
+
+    .element {
+        width: 90%;
+        text-align: center;
+    }
+
+    .menu-lien {
+        background-color: #cdcae8;
+        border-radius: 5px;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .sous-menu {
+        position: static;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        display: none;
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .menu-checkbox:checked + .menu-lien + .sous-menu {
+        display: block;
+    }
+
+    .sous-menu li a {
+        font-size: 0.95rem;
+    }
+}
+

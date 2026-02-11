@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #D8AE7E, #AF8260);
+    margin: 0;
+    padding: 50px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: auto;          
+}
+
+form {
+    background-color: #FFE0B5;
+    max-width: 500px;
+    width: 100%;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+
+form table tr {
+    margin-bottom: 5px;
+    display: block;
+}
+
+
+input[type="text"], 
+input[type="email"], 
+input[type="password"], 
+input[type="tel"], 
+input[type="url"], 
+input[type="search"], 
+input[type="date"], 
+textarea, 
+select {
+    width: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 2px solid #D8AE7E;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #AF8260;
+    box-shadow: 0 0 8px rgba(175, 130, 96, 0.6);
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: #AF8260;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #7A4E2D;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="search"],
+    input[type="date"],
+    textarea,
+    select {
+        width: 100%;
+    }
+}

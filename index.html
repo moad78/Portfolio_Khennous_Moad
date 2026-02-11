@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Moad Khennous</title>
+    <!-- Police Inter & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+    <!-- Fond animé -->
+    <div class="bg-gradient"></div>
+
+    <!-- Navigation Mobile -->
+    <div class="menu-toggle" id="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    
+    <header>
+        <nav>
+            <a href="#accueil" class="active">Accueil</a>
+            <a href="#competences">Compétences</a>
+            <a href="#projets">Projets</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- SECTION ACCUEIL -->
+    <section id="accueil" class="accueil">
+        <div class="accueil-contenue">
+            <h1>Salut, c'est <span>Moad</span></h1>
+            <h3 class="text-taper">Je suis un <span></span></h3>
+            <p><strong>Étudiant en première année de BTS SIO au lycée Parc de Vilgénis à Massy.</strong><br>
+                Passionné par le développement et l'administration système, je conçois des solutions modernes et sécurisées.
+                Toujours en quête de nouveaux défis techniques pour perfectionner mes compétences.
+            </p>
+            
+            <div class="reseaux-sociaux-logo">
+                <a href="https://www.linkedin.com/in/moad-khennous-13a757383" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/moad78" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.tiktok.com/@khmoad_78" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/moad_k78" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            
+            <a href="#projets" class="projets-btn">Voir mes réalisations</a>
+        </div>
+
+        <div class="accueil-img-container">
+            <!-- Animation Lottie Unique -->
+            <div id="lottie-animation"></div>
+        </div>
+    </section>
+
+    <!-- SECTION COMPETENCES -->
+    <section id="competences" class="competences section-padding">
+        <h2 class="section-title reveal-up">Mes <span>Compétences</span></h2>
+        
+        <div class="competences-container">
+            <div class="skill-card reveal-up">
+                <div class="icon-box"><i class="fa-solid fa-code"></i></div>
+                <h3>Développement Web</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <div class="skill-info"><span>HTML / CSS</span><span>100%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 100%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>JavaScript </span><span>75%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>PHP / MySQL</span><span>70%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-card reveal-up" style="transition-delay: 0.1s;">
+                <div class="icon-box"><i class="fa-solid fa-server"></i></div>
+                <h3>Système & Réseau</h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Linux (Debian)</span><span>70%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>VirtualBox / VM</span><span>65%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 65%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Bash Scripting</span><span>30%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 30%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-card reveal-up" style="transition-delay: 0.2s;">
+                <div class="icon-box"><i class="fa-solid fa-toolbox"></i></div>
+                <h3>Outils & Soft Skills</h3>
+                <div class="skill-tags">
+                    <span>GitHub</span>
+                    <span>phpMyAdmin</span>
+                    <span>Python</span>
+                    <span>Office 365</span>
+                    <span>HTML/CSS/JS</span>
+                    <span>Linux</span>
+                    <span>PHP/MYSQL</span>
+                    <span>VS Code</span>
+                    <span>Wireshark</span>
+                    <span>Packet Tracer</span>
+                    <span>VirtualBox</span>
+                    <span>Travail d'équipe</span>
+                    <span>Autonomie</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION PROJETS -->
+    <section id="projets" class="projets section-padding">
+        <h2 class="section-title reveal-up">Mes <span>Réalisations</span></h2>
+
+        <!-- Filtres -->
+        <div class="filters reveal-up">
+            <button class="filter-btn active" data-filter="all">Tout</button>
+            <button class="filter-btn" data-filter="semestre1">Semestre 1</button>
+            <button class="filter-btn" data-filter="semestre2">Semestre 2</button>
+            <button class="filter-btn" data-filter="certif">Certifications</button>
+        </div>
+
+        <div class="projects-grid">
+            
+            <!-- --- SEMESTRE 2 --- -->
+            <div class="project-card reveal-up semestre2">
+                <div class="project-img">
+                    <img src="for.jpg" alt="Site Centre Formation">
+                    <div class="overlay">
+                        <a href="http://moad-final-site.xo.je/" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="tag tag-s2">Semestre 2</span>
+                    <h3>Site Centre de Formation</h3>
+                    <p>Développement complet d'un site vitrine pour un centre de formation. Intégration responsive, présentation des cours et formulaire de contact.</p>
+                </div>
+            </div>
+
+            <!-- --- SEMESTRE 1 --- -->
+            <div class="project-card reveal-up semestre1">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" alt="Portail Web">
+                
+                <div class="overlay">
+                        <a href="Mission2_s1/index.html" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="tag">Semestre 1</span>
+                    <h3>Portail d'Information BTS SIO</h3>
+                    <p>Création d'un portail web utilisant des <strong>iframes</strong> pour centraliser des contenus (Google Maps, PDF, Vidéos) avec une navigation latérale fixe.</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal-up semestre1">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80" alt="Event Site">
+                    <div class="overlay">
+                        <a href="Mission3_s1/mission3.html" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
+                    </div>
+                </div>
+                <div class="project-content">
+               <span class="tag">Semestre 1</span>
+                    <h3>Site Événementiel (EventSite)</h3>
+                    <p>Développement d'un site pour un événement type TEDx. Création d'un formulaire d'inscription complet et d'une page de présentation responsive.</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal-up semestre1">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=800&q=80" alt="Debian Linux">
+                    <div class="overlay">
+                        <a href="Mission4_s1/Mission 4 _Khennous_Moad_Les environnements d’exploitation.pdf" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
+                    </div>
+                </div>
+                <div class="project-content">
+               <span class="tag">Semestre 1</span>
+                    <h3>Environnement Linux (Debian)</h3>
+                    <p>Installation et configuration d'une machine virtuelle <strong>Debian 13</strong>. Gestion des utilisateurs, commandes bash de base et configuration réseau.</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal-up semestre1">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80" alt="CV HTML">
+                    <div class="overlay">
+                        <a href="Mission5_s1/index.html" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
+                    </div>
+                </div>
+                <div class="project-content">
+             <span class="tag">Semestre 1</span>
+                    <h3>Portfolio Numérique & CV</h3>
+                    <p>Conception d'un CV numérique en HTML5/CSS3 et intégration au portfolio. Respect des normes sémantiques et mise en page structurée.</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal-up semestre1">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?auto=format&fit=crop&w=800&q=80" alt="Quiz JS">
+                    <div class="overlay">
+                        <a href="Mission6_s1/index.html" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
+                    </div>
+                </div>
+                <div class="project-content">
+                 <span class="tag">Semestre 1</span>
+                    <h3>QCM Interactif (JavaScript)</h3>
+                    <p>Développement d'un module de QCM en JavaScript avec calcul dynamique du score, correction automatique et gestion des erreurs.</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal-up semestre1">
+                <div class="project-img">
+                    <img src="sql.png" alt="SQL Database">
+                    <div class="overlay">
+                        <a href="Mission7_s1/index.html" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
+                    </div>
+                </div>
+                <div class="project-content">
+                   <span class="tag">Semestre 1</span>
+                    <h3>Base de Données SQL</h3>
+                    <p>Création d'une BDD "Cinéma" sous <strong>phpMyAdmin</strong>. Modélisation des tables (Films, Acteurs), gestion des clés étrangères et requêtes SQL complexes.</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal-up semestre1">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" alt="Facture JS">
+                    <div class="overlay">
+                        <a href="Mission8_s1/index.html" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="tag">Semestre 1</span>
+                    <h3>Module de Facturation</h3>
+                    <p>Application de facturation dynamique en JS. Calcul automatique des totaux (HT/TTC), remises, et ajout dynamique de lignes de produits.</p>
+                </div>
+            </div>
+
+            <!-- --- CERTIFICATIONS --- -->
+            <div class="project-card reveal-up certif">
+                <div class="project-img">
+                    <img src="anssi.png" alt="SecNum">
+                    <div class="overlay">
+                        <a href="Certif_Mooc_ANSSI/index.html" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="tag tag-certif">Certification</span>
+                    <h3>Certification ANSSI</h3>
+                    <p>Validation du MOOC <strong>SecNumAcadémie</strong> de l'ANSSI. Acquisition des bonnes pratiques de cybersécurité (authentification, internet, poste de travail).</p>
+                </div>
+            </div>
+
+                <div class="project-card reveal-up certif">
+                <div class="project-img">
+                <img src="ebios.png" alt="EBIOS Risk Manager">
+                    <div class="overlay">
+                        <a href="Certif_Ebios/index.html" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="tag tag-certif">Certification</span>
+                    <h3>Certification EBIOS</h3>
+                    <p>Validation de la méthode <strong>EBIOS</strong>. Formation basée sur la méthode EBIOS Risk Manager, utilisée pour analyser et gérer les risques en cybersécurité.
+Elle permet d’identifier les menaces, évaluer les impacts et mettre en place des mesures de sécurité adaptées.</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal-up certif">
+                <div class="project-img">
+                 <img src="rgpd.jpg" alt="RGPD Certification">
+                 <div class="overlay">
+                        <a href="Certfi_Atelier_RGPD/index.html" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> Voir le Site</a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="tag tag-certif">Certification</span>
+                    <h3>Certification Atelier RGPD</h3>
+                    <p>Validation de l'Atelier <strong>RGPD</strong>. Formation pratique sur le Règlement Général sur la Protection des Données (RGPD).
+Elle explique les principes de protection des données personnelles, les obligations légales et les responsabilités des organisations.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION CONTACT -->
+    <section id="contact" class="section-padding" style="text-align: center;">
+        <h2 class="section-title reveal-up">Me <span>Contacter</span></h2>
+        <p class="reveal-up" style="color: var(--text-muted); max-width: 600px; margin: 0 auto 30px;">
+            Vous avez un projet ou une opportunité de stage ? N'hésitez pas à me contacter par email ou via mes réseaux sociaux.
+        </p>
+        <a href="mailto:moadkhennous78@gmail.com" class="projets-btn reveal-up">Envoyer un email</a>
+    </section>
+
+    <!-- BOUTON SCROLL TO TOP -->
+    <div id="scrollToTop" class="scroll-to-top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

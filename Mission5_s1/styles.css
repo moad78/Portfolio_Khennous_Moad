@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.back{
+    margin-left:25%;
+    border: 2px solid #902e24;
+    width: 57%;
+    height: 160vh;
+    padding: 10px;
+    border-radius: 7px;
+    font-family: 'Poppins';
+}
+
+.tete{
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+.info{
+    float: left;
+}
+
+#adresse{
+    margin-top: 20px;
+}
+
+.photo{
+    float: right;
+    margin-right: 10%;
+}
+
+img{
+    width: 250px;
+    height: 200px;
+    border-radius: 5px;
+}
+.block1 h3{
+    float: left;
+    clear: both;
+    padding-bottom: 15px;
+    font-family: 'Oswald', sans-serif;
+    color: #902e24;
+}
+.block2{
+    width: 300px;
+    height: 200px;
+    float: left;
+    clear: both;
+    margin-bottom: 40px;
+}
+
+.block2 li{
+    margin-bottom: 25px;
+    list-style-type: none
+}
+.block3{
+    float: right;
+    margin-bottom: 80px;
+    width: 600px;
+    height: 200px;
+    margin-right: 10%;
+
+}
+
+.block2 .date li{
+    margin-bottom: 140px;
+
+}
+
+.block3 .diplome p{
+    margin-bottom: 20px;
+}
+
+.block3 .exp p{
+    padding-bottom: 10px;
+}
+
+.block3 .loisirs p{
+    padding-bottom: 15px;
+}

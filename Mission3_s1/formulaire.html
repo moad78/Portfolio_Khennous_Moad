@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <form>
+        <table>
+            <h1>Formulaire d'inscription</h1>
+        <tr>    
+            <td><label for="pseudo">Pseudo* </label></td>
+            <td><input type="text"id="pseudo" name="pseudo" placeholder="ex:moad78" required> </td>
+        </tr>
+  
+        <tr>
+            <td><label for="mdp" >Mot de passe </label></td>
+            <td><input type="password" id="mdp" name="mdp" placeholder="ex:vvffmmoad78" required></td>
+        </tr>
+ 
+        <tr>
+            <td><label for="nom">Prenom </label></td>
+            <td><input type="text"id="nom" name="nom" placeholder="ex:Moad"required></td>
+        </tr>
+   
+        <tr>
+            <td><label for="email" >Email</label></td>
+            <td><input type="email" id="email" name="email" placeholder="ex:moad78.vilgenis@gmail.com" required></td>
+        </tr>
+   
+        <tr>
+            <td><label for="fichier" > Avatar </label></td>
+            <td><input type="file" name="fichier" accept="video/*" required></td>
+        </tr>
+
+        <tr>
+            <td><label for="pays">Pays  </label></td>
+            <td><select>
+                <option>Espagne</option>
+                <option>France</option>
+                <option>Angleterre</option>
+                <option>Italie</option>
+                <option>Allemagne</option>
+                <option>Portugale</option>
+                <option>Belgique</option>
+            </select></td>
+        </tr>
+ 
+        <tr>
+            <td><label for="fruit">Quel est votre fruit favori ?</label></td>
+            <td><input type="checkbox" id="pasteque" name="pasteque" checked>Pasteque
+            <input type="checkbox" id="cerise" name="cersie" >Cerise
+            <input type="checkbox" id="fraise" name="fraise" >Fraise
+            </td>
+        </tr>
+ 
+        <tr>
+            <td><label for="male">Civilité</label></td>
+            <td><input type="radio" id="male" name="genre" value="Homme" required>Homme
+            <input type="radio" id="female" name="genre" value="Femme" required>Femme</td>
+        </tr>
+   
+        <tr>
+            <td><label for="ville">Ville  </label></td>
+            <td><input type="text"id="ville" name="ville" placeholder="ex:Massy"required> </td>
+        </tr>
+  
+        <tr>
+            <td><label for="cp">Code postale  </label></td>
+            <td><input type="text" id="cp" name="cp"  placeholder="ex:Massy"  required> </td>
+        </tr>
+   
+        <tr>
+            <td><label for="cp">Adresse  </label></td>
+            <td><textarea id="adresse" name="adresse" rows="5"  placeholder="ex:7 square Paul gaugin"></textarea></td>
+        </tr>
+    
+        <tr>
+            <td><label for="ddn">Date de naissance </label></td>
+            <td><input type="date" id="ddn" name="date_naissance" required></td>
+        </tr>
+    
+        <tr>
+            <td><label for="jauge">Jauge</label></td>
+            <td><input type="range" id="jauge" name="jauge" min="0" max="11" ></td>
+        </tr>
+        <tr>
+            <td><label for="tel">Telephone</label></td>
+            <td><input type="tel" id="tel" name="tel" pattern="^(0[1-9])(?:[ _.-]?[0-9]{2}){4}$"  placeholder="ex: 06.21.58.76.88" required ></td>
+        </tr>
+        <tr>
+            <td><label for="recherche">Recherche</label></td>
+            <td><input type="search" id="recherche" name="recherche"  placeholder="ex:recherchez"  ></td>
+        </tr>
+        <tr>
+            <td><label for="lien">Url</label></td>
+            <td><input type="url" id="lien" name="lien"  placeholder="ex:https://www.lyceevilgenis.fr"></td>
+        </tr>
+        <tr>
+            <td><label for="col">Couleur</label></td>
+            <td><input type="color" id="col" name="col" value="#e66465" /></td>
+        </tr>
+        </table>
+        <input type="submit" value="Valider"> </br>
+        <a href="mission3.html">Retour à la page d'acceuil</a>
+    </form>
+    
+</body>
+</html>

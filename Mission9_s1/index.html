@@ -1,0 +1,134 @@
+<!----- Khennous Moad 1SIOB- Mission 11 ----->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Module de facturation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<div class="facture">
+
+    <section class="facture-entete">
+        <div class="compagnie-info">
+            <h1>Nom de la compagnie : Moad Compagnie</h1>
+            <p>Adresse postale : 123 Rue Gaugin, Paris</p>
+            <p>Téléphone : 0123456789</p>
+            <p>Détails du contact : contact@moadcompagnie.com</p>
+        </div>
+        <div class="facture-info">
+            <h2>FACTURE</h2>
+            <p>Date : <span id="dateFacture"></span></p>
+            <p>N° facture : 2025-001</p>
+        </div>
+    </section>
+
+    <section class="infos-clients">
+        <div class="bloc">
+            <h3>Destinataire</h3>
+            <p>Nom</p>
+            <p>Nom de la société</p>
+            <p>Adresse postale</p>
+            <p>Téléphone</p>
+            <p>Email</p>
+        </div>
+        <div class="bloc">
+            <h3>Envoyée à</h3>
+            <p>Nom</p>
+            <p>Nom de la société</p>
+            <p>Adresse postale</p>
+            <p>Téléphone</p>
+            <p>Email</p>
+        </div>
+    </section>
+
+    
+        <table id="table_colonnes">
+            <thead>
+            <tr>
+                <th>DESCRIPTION</th>
+                <th>QUANTITÉ</th>
+                <th>PRIX UNITAIRE</th>
+                <th>TOTAL</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+            <tr class="row" id="modeleLigne">
+                <td><input type="text" class="input desc" value=""></td>
+                <td><input type="text" class="input qte" value="0"></td>
+                <td><input type="text" class="input prix" value="0"></td>
+                <td><input type="text" class="input totalLigne" value="0" readonly></td>
+            </tr>
+
+            
+            <tr class="row lastrow" id="lastLigne">
+                <td><input type="text" class="input desc" value=""></td>
+                <td><input type="text" class="input qte" value="0"></td>
+                <td><input type="text" class="input prix" value="0"></td>
+                <td><input type="text" class="input totalLigne" value="0" readonly></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="remarques">
+            <p>Remarques, notes et instructions de paiement</p>
+            <textarea rows="4" cols="40"></textarea>
+        </div>
+    
+
+    
+        <div class="bloc-totaux">
+
+            <div class="ligne-total">
+                <label for="sousTotal">SOUS-TOTAL</label>
+                <input type="text" id="sousTotal" value="0" readonly>
+            </div>
+
+            <div class="ligne-total">
+                <label for="remise">REMISE (%)</label>
+                <input type="text" id="remise" value="0">
+            </div>
+
+            <div class="ligne-total">
+                <label for="sousTotalRemise">SOUS-TOTAL MOINS LES REMISES</label>
+                <input type="text" id="sousTotalRemise" value="0" readonly>
+            </div>
+
+            <div class="ligne-total">
+                <label for="tauxImposition">TAUX D’IMPOSITION (%)</label>
+                <input type="text" id="tauxImposition" value="0">
+            </div>
+
+            <div class="ligne-total">
+                <label for="taxeTotale">TAXE TOTALE</label>
+                <input type="text" id="taxeTotale" value="0" readonly>
+            </div>
+
+            <div class="ligne-total">
+                <label for="fraisExpedition">EXPEDITO, MANUTENTION</label>
+                <input type="text" id="fraisExpedition" value="0">
+            </div>
+
+            <div class="ligne-total solde">
+                <label for="solde">SOLDE DÛ</label>
+                <input type="text" id="solde" value="0" readonly>
+            </div>
+
+        </div>
+   
+
+    <footer class="actions">
+        <button type="button" onclick="calculate()">Calculer</button>
+        <button type="button" onclick="ajouterLigne()">Ajouter une ligne</button>
+        <button type="button" onclick="remplir()">Remplir automatiquement</button>
+        <button type="reset" onclick="location.reload()">Annuler</button>
+    </footer>
+
+</div>
+
+</body>
+</html>
