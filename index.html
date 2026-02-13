@@ -11,16 +11,13 @@
 </head>
 <body>
    <div id="intro-screen">
-    <div class="walker-container">
+    <h2 class="drag-instruction">Glissez-moi dans la maison pour accéder au portfolio !</h2>
+
+    <div class="game-container">
         
-        <div class="intro-character sign-holder">
+        <div id="draggable-char" class="intro-character">
             
-            <div class="sign-structure">
-                <button id="sign-btn" class="sign-board">
-                    <span>Portfolio - Khennous Moâd</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
+            <div class="question-mark">?</div>
 
             <div class="head">
                 <div class="face">
@@ -31,14 +28,19 @@
                     <div class="mouth-smile"></div>
                 </div>
             </div>
-            
             <div class="body-shape"></div>
-            
-            <div class="arm arm-left-up"></div>
-            <div class="arm arm-right-up"></div>
-            
+            <div class="arm arm-left"></div>
+            <div class="arm arm-right"></div>
             <div class="leg leg-left"></div>
             <div class="leg leg-right"></div>
+        </div>
+        <div id="target-house" class="house-container">
+            <div class="roof"></div>
+            <div class="walls">
+                <div class="house-name">KHENNOUS<br>MOAD</div>
+                <div class="door"></div>
+            </div>
+            <div class="house-shadow"></div>
         </div>
 
     </div>
