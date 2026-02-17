@@ -256,240 +256,105 @@ section { min-height: 100vh; position: relative; padding-top: 100px; }
 }
 .reveal-up.visible { opacity: 1 !important; transform: translateY(0) !important; }
 
+
 /* =========================================
-   INTRO SCREEN (DRAG & DROP)
+   INTRO SCREEN (FINALE)
    ========================================= */
 #intro-screen {
-    position: fixed; inset: 0; 
-    background: radial-gradient(circle at center, #1e293b 0%, #020617 100%);
-    display: flex; flex-direction: column; justify-content: center; align-items: center; 
-    z-index: 3000; overflow: hidden;
-    touch-action: none; /* Empêche le scroll sur mobile pendant le jeu */
+    position: fixed;
+    inset: 0;
+    background: #020617; /* Fond sombre */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
 }
 
-.drag-instruction {
-    color: #fff; font-size: 24px; margin-bottom: 50px;
-    font-weight: 700; opacity: 0.8; animation: pulse 2s infinite;
-    pointer-events: none; user-select: none;
-}
-
-.game-container {
+.intro-content {
+    text-align: center;
     position: relative;
-    width: 100%; max-width: 800px; height: 400px;
-    display: flex; align-items: center; justify-content: center;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* C'EST ICI : On remonte tout le bloc de 20% vers le haut */
+    margin-bottom: 20vh; 
 }
 
-/* --- LE PERSONNAGE (DRAGGABLE + ANIMATION) --- */
-.intro-character {
-    width: 100px; height: 160px; position: absolute;
-    /* Position finale (Arrêté devant la maison) */
-    left: 20%; top: 50%; transform: translate(-50%, -50%);
-    cursor: grab; z-index: 100;
+/* 1. LOTTIE ANIMATION (Fusée) */
+#lottie-welcome {
+    width: 350px;
+    height: 350px;
     
-    /* ANIMATION D'ENTRÉE : Marche et s'arrête */
-    animation: walk-in-stop 2.5s ease-out forwards;
-}
-
-.intro-character:active { cursor: grabbing; }
-
-/* Style Dragging (Quand on le tient) */
-.intro-character.is-dragging { 
-    transform: scale(1.1); 
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5)); 
-    transition: none; /* Pas de latence quand on le tient */
+    /* MODIFICATION ICI : */
+    margin-bottom: 20px; /* On met un espace positif pour qu'il soit bien au-dessus du texte */
     
-    animation: none !important; 
+    opacity: 0;
+    animation: fadeInLottie 1s ease-out 0.5s forwards;
 }
 
-/* --- LE POINT D'INTERROGATION --- */
-.question-mark {
-    position: absolute;
-    top: -60px; left: 50%; transform: translateX(-50%);
-    font-size: 50px; font-weight: 900; color: #fff;
-    text-shadow: 0 0 15px var(--primary);
-    opacity: 0; /* Caché au début */
-    /* Apparait APRÈS la marche (2.5s de délai) */
-    animation: show-question 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.5s forwards;
+/* 2. TITRE "PORTFOLIO" */
+.intro-title {
+    font-family: 'Cinzel', serif;
+    font-size: 90px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    margin: 0;
+    line-height: 1;
+    
+    /* Dégradé Doré/Violet */
+    background: linear-gradient(135deg, #fff 30%, var(--primary) 50%, var(--accent) 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    opacity: 0;
+    transform: translateY(40px);
+    animation: revealText 1s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
+    
+    filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.4));
+}
+
+/* 3. SOUS-TITRE */
+.intro-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-top: 25px;
+    
+    opacity: 0;
+    transform: translateY(20px);
+    animation: revealText 1s cubic-bezier(0.22, 1, 0.36, 1) 1.8s forwards;
+}
+
+.separator { color: var(--primary); margin: 0 12px; }
+
+/* ANIMATIONS */
+@keyframes fadeInLottie {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+@keyframes revealText {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideOut {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100vh); }
+}
+#intro-screen.fade-out {
+    animation: slideOut 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
     pointer-events: none;
 }
 
-/* DISPARAIT QUAND ON LE TIENT (et réapparait quand on lâche grâce au CSS) */
-.intro-character.is-dragging .question-mark {
-    opacity: 0 !important;
-    transition: opacity 0.2s;
-    animation: none; /* Stoppe l'animation pour permettre de le cacher */
-}
-
-/* Tête */
-.intro-character .head {
-    width: 60px; height: 60px; background: #f3f4f6; border-radius: 50%;
-    position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 5;
-}
-.intro-character .face { position: relative; top: 20px; display: flex; flex-direction: column; align-items: center; }
-.intro-character .eyes { display: flex; gap: 10px; }
-.intro-character .eye { width: 8px; height: 8px; background: #1f2937; border-radius: 50%; }
-.intro-character .mouth-smile { width: 12px; height: 6px; border-bottom: 3px solid #1f2937; border-radius: 0 0 10px 10px; margin-top: 4px; }
-
-/* Corps */
-.intro-character .body-shape {
-    width: 60px; height: 75px; background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: 20px; position: absolute; top: 55px; left: 50%; transform: translateX(-50%); z-index: 4;
-}
-
-/* Bras */
-.intro-character .arm {
-    width: 15px; height: 50px; background: var(--secondary);
-    position: absolute; border-radius: 10px; top: 60px; z-index: 3;
-}
-.intro-character .arm-left { left: 15px; transform: rotate(10deg); }
-.intro-character .arm-right { right: 15px; transform: rotate(-10deg); }
-.intro-character .arm::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 12px; background: #f3f4f6; border-radius: 5px; }
-
-/* Animation Bras quand on le porte */
-.intro-character.is-dragging .arm-left { transform: rotate(-140deg); transition: 0.3s; }
-.intro-character.is-dragging .arm-right { transform: rotate(140deg); transition: 0.3s; }
-.intro-character.is-dragging .mouth-smile { height: 10px; width: 10px; border: 3px solid #1f2937; border-radius: 50%; background: #000; }
-
-/* Jambes */
-.intro-character .leg {
-    width: 16px; height: 45px; background: #0f172a; border-radius: 8px;
-    position: absolute; bottom: 0; z-index: 3; transform-origin: top center;
-}
-.intro-character .leg-left { 
-    left: 30px; 
-    /* Marche pendant 2.5s (5 itérations de 0.5s) puis s'arrête */
-    animation: leg-walk 0.5s alternate 5; 
-}
-.intro-character .leg-right { 
-    right: 30px; 
-    animation: leg-walk 0.5s alternate-reverse 5; 
-}
-
-/* Quand on le traine, les jambes pendent */
-.intro-character.is-dragging .leg { animation: dangle 1s infinite ease-in-out; }
-
-/* --- NOUVELLES ANIMATIONS --- */
-@keyframes walk-in-stop {
-    0% { left: -100px; } /* Part de hors champ gauche */
-    100% { left: 20%; }  /* S'arrête devant la maison */
-}
-
-@keyframes show-question {
-    from { opacity: 0; transform: translate(-50%, 10px) scale(0.5); }
-    to { opacity: 1; transform: translate(-50%, 0) scale(1); }
-}
-
-@keyframes leg-walk {
-    from { transform: rotate(20deg); }
-    to { transform: rotate(-20deg); }
-}
-
-@keyframes dangle {
-    0%, 100% { transform: rotate(5deg); }
-    50% { transform: rotate(-5deg); }
-}
-
-/* --- LA MAISON (GRANDE VERSION) --- */
-.house-container {
-    position: absolute;
-    /* Positionnée à droite */
-    right: 15%; top: 50%; transform: translate(50%, -50%);
-    /* On augmente la zone globale */
-    width: 300px; 
-    display: flex; flex-direction: column; align-items: center;
-    transition: 0.3s;
-    z-index: 10;
-}
-
-/* Effet de grossissement au survol */
-.house-container.hovered { transform: translate(50%, -50%) scale(1.05); }
-
-.roof {
-    width: 0; height: 0;
-    /* TOIT X2 : 80px -> 160px et 60px -> 120px */
-    border-left: 160px solid transparent;
-    border-right: 160px solid transparent;
-    border-bottom: 120px solid var(--primary); /* Toit violet */
-    filter: drop-shadow(0 -5px 15px rgba(139,92,246,0.4));
-    z-index: 2;
-    margin-bottom: -1px; /* Corrige petit espace blanc parfois visible */
-}
-
-.walls {
-    /* MURS X2 : 120px -> 240px de large */
-    width: 240px; 
-    height: 180px; /* 90px -> 180px de haut */
-    background: #e2e8f0; /* Gris clair */
-    position: relative;
-    box-shadow: inset -10px 0 20px rgba(0,0,0,0.05);
-    display: flex; 
-    flex-direction: column; /* Pour empiler Nom + Porte */
-    justify-content: flex-end; /* Pousse tout vers le bas */
-    align-items: center;
-}
-
-/* STYLE DU NOM */
-.house-name {
-    margin-bottom: auto; /* Pousse le texte vers le haut */
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: 900;
-    color: #1e293b;
-    text-align: center;
-    line-height: 1.2;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.8;
-}
-
-.door {
-    /* PORTE X2 : 40x60 -> 80x120 */
-    width: 80px; height: 120px;
-    background: #1e293b; /* Porte foncée */
-    border-radius: 8px 8px 0 0;
-    transition: 0.3s;
-    box-shadow: inset 4px 4px 10px rgba(0,0,0,0.5);
-    position: relative;
-}
-
-/* Poignée de porte (petit détail en plus vu la taille) */
-.door::after {
-    content: ''; position: absolute; top: 50%; right: 10px;
-    width: 8px; height: 8px; background: #fbbf24; border-radius: 50%;
-    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-}
-
-/* La porte s'allume en blanc quand on approche */
-.house-container.hovered .door { background: #fff; box-shadow: 0 0 30px #fff; }
-
-.house-shadow {
-    width: 280px; height: 30px; background: rgba(0,0,0,0.4);
-    border-radius: 50%; margin-top: -15px; filter: blur(10px); z-index: -1;
-}
-
-/* AJUSTEMENT MOBILE (Car la maison est très grande maintenant) */
+/* Mobile */
 @media (max-width: 768px) {
-    .house-container { 
-        right: auto; left: 50%; top: 85%; /* Plus bas */
-        transform: translate(-50%, -50%) scale(0.7); /* On réduit à 70% sur mobile pour que ça rentre */
-    }
-    .house-container.hovered { transform: translate(-50%, -50%) scale(0.75); }
-}
-/* --- ANIMATIONS --- */
-@keyframes dangle {
-    0%, 100% { transform: rotate(5deg); }
-    50% { transform: rotate(-5deg); }
-}
-@keyframes pulse { 0%, 100% { opacity: 0.8; } 50% { opacity: 1; transform: scale(1.02); } }
-@keyframes intro-exit { to { opacity: 0; transform: scale(1.5); } }
-#intro-screen.hide { animation: intro-exit 0.8s ease-in forwards; pointer-events: none; }
-
-/* Responsive Mobile */
-@media (max-width: 768px) {
-    .game-container { flex-direction: column; gap: 50px; }
-    .intro-character { left: 50%; top: 20%; }
-    .house-container { right: auto; left: 50%; top: 80%; transform: translate(-50%, -50%); }
-    .house-container.hovered { transform: translate(-50%, -50%) scale(1.1); }
+    .intro-title { font-size: 48px; letter-spacing: 3px; }
+    .intro-subtitle { font-size: 14px; letter-spacing: 3px; }
+    #lottie-welcome { width: 200px; height: 200px; }
 }
 /* =========================================
    SECTION CONTACT (NOUVEAU STYLE)
