@@ -173,143 +173,6 @@ setTimeout(() => {
         observerSkills.observe(skillSection);
     }
 
-    // --- 8. INTRO SCREEN DRAG & DROP ---
-    const char = document.getElementById('draggable-char');
-    const house = document.getElementById('target-house');
-    const introScreen = document.getElementById('intro-screen');
-
-    if (char && house && introScreen) {
-        document.body.style.overflow = 'hidden'; // Bloque le scroll
-
-        let isDragging = false;
-        let startX, startY, initialLeft, initialTop;
-
-        // Fonction pour démarrer le drag
-        const startDrag = (e) => {
-            isDragging = true;
-            char.classList.add('is-dragging');
-            
-            // On coupe l'animation immédiatement via le style inline pour être sûr
-            char.style.animation = 'none'; 
-
-            // Récupère la position (Souris ou Touch)
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-            // Position actuelle de l'élément
-            const rect = char.getBoundingClientRect();
-            
-            // Calcul du décalage souris/élément
-            // On compense le fait que le transform:translate(-50%, -50%) va être retiré
-            startX = clientX - rect.left;
-            startY = clientY - rect.top;
-        };
-
-        // Fonction pendant le mouvement
-        const onDrag = (e) => {
-            if (!isDragging) return;
-            e.preventDefault(); // Empêche le scroll sur mobile
-
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-            // Déplace le personnage (suis le curseur)
-            // On utilise fixed positionnement temporaire via style transform
-            char.style.position = 'fixed';
-            char.style.left = `${clientX - startX}px`;
-            char.style.top = `${clientY - startY}px`;
-            char.style.transform = 'none'; // Annule le translate CSS par défaut
-
-            checkCollision();
-        };
-
-        // Fonction fin du drag
-        const stopDrag = () => {
-            if (!isDragging) return;
-            isDragging = false;
-            char.classList.remove('is-dragging');
-
-            if (checkCollision()) {
-                // VICTOIRE : Entrer dans le portfolio
-                enterPortfolio();
-            } else {
-                // ÉCHEC : Retour à la position de départ (animation CSS ou reset)
-                resetPosition();
-            }
-        };
-
-        // Détection de collision (A-t-on touché la maison ?)
-        const checkCollision = () => {
-            const charRect = char.getBoundingClientRect();
-            const houseRect = house.getBoundingClientRect();
-
-            // On considère qu'il y a collision si le centre du perso est dans la maison
-            const charCenterX = charRect.left + charRect.width / 2;
-            const charCenterY = charRect.top + charRect.height / 2;
-
-            const isOverlapping = (
-                charCenterX > houseRect.left &&
-                charCenterX < houseRect.right &&
-                charCenterY > houseRect.top &&
-                charCenterY < houseRect.bottom
-            );
-
-            if (isOverlapping) {
-                house.classList.add('hovered'); // La porte s'allume
-                return true;
-            } else {
-                house.classList.remove('hovered');
-                return false;
-            }
-        };
-
-        const enterPortfolio = () => {
-            // Animation finale : Le perso disparait dans la porte
-            char.style.transition = "all 0.5s ease";
-            char.style.opacity = "0";
-            char.style.transform = "scale(0.1)"; // Il rétrécit
-            
-            setTimeout(() => {
-                introScreen.classList.add('hide'); // L'écran d'intro disparait
-                setTimeout(() => {
-                    introScreen.style.display = 'none';
-                    document.body.style.overflow = 'auto'; // Réactive le scroll
-                }, 800);
-            }, 300);
-        };
-
-        const resetPosition = () => {
-            // Reset : on le remet à sa place "d'arrêt" (devant la maison)
-            char.style.transition = "all 0.5s ease";
-            char.style.position = "absolute";
-            
-            // Sur Desktop : 20% (comme dans le CSS walk-in-stop)
-            // Sur Mobile : 50% (centré)
-            if (window.innerWidth <= 768) {
-                char.style.left = "50%";
-                char.style.top = "20%";
-            } else {
-                char.style.left = "20%"; // << C'est ici l'important
-                char.style.top = "50%";
-            }
-            char.style.transform = "translate(-50%, -50%)";
-
-            // Une fois remis en place, on réactive la transition rapide pour le prochain drag
-            setTimeout(() => {
-                char.style.transition = "transform 0.1s linear"; 
-            }, 500);
-        };
-
-        // Événements Souris (PC)
-        char.addEventListener('mousedown', startDrag);
-        window.addEventListener('mousemove', onDrag);
-        window.addEventListener('mouseup', stopDrag);
-
-        // Événements Touch (Mobile)
-        char.addEventListener('touchstart', startDrag, { passive: false });
-        window.addEventListener('touchmove', onDrag, { passive: false });
-        window.addEventListener('touchend', stopDrag);
-    }
 
     // --- 9. ANIMATION LOTTIE CONTACT (AJOUT) ---
     const contactLottieContainer = document.getElementById('lottie-contact');
@@ -329,5 +192,33 @@ setTimeout(() => {
         } catch(e) { 
             console.error("Erreur lors du chargement du Lottie Contact :", e); 
         }
+    }
+    // --- 10. INTRO SCREEN CINEMATIQUE ---
+    const introScreen = document.getElementById('intro-screen');
+    const lottieWelcome = document.getElementById('lottie-welcome');
+    
+    if (introScreen && lottieWelcome) {
+        // Bloque le scroll
+        document.body.style.overflow = 'hidden';
+
+        try {
+            lottie.loadAnimation({
+                container: lottieWelcome,
+                renderer: 'svg',
+                loop: false, 
+                autoplay: true,
+                // LIEN STABLE (Fusée Décollage)
+                path: 'https://assets9.lottiefiles.com/packages/lf20_96bovdur.json'
+            });
+        } catch(e) { console.error("Erreur Lottie Intro"); }
+
+        // Séquence de fin (après 4.5 secondes)
+        setTimeout(() => {
+            introScreen.classList.add('fade-out');
+            document.body.style.overflow = 'auto';
+            setTimeout(() => {
+                introScreen.style.display = 'none';
+            }, 1000);
+        }, 4500); 
     }
 });
