@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rendu de Base de Données</title>
+    <style>
+        /* Styles généraux */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Conteneur principal pour centrer le contenu */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Style pour chaque section (MCD, MLD, SQL) */
+        .livrable-section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .livrable-section:last-child {
+            border-bottom: none; /* Enlève la ligne sous le dernier élément */
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        /* Style pour les captures d'écran */
+        .capture-ecran {
+            max-width: 100%; /* L'image s'adapte à la largeur de l'écran */
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Style pour le bouton de téléchargement */
+        .bouton-telecharger {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .bouton-telecharger:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="livrable-section">
+            <h2>1) Capture écran du MCD</h2>
+            <img src="mcd.png" alt="Capture d'écran du MCD" class="capture-ecran">
+        </div>
+
+        <div class="livrable-section">
+            <h2>2) Capture écran du concepteur (MLD) sur phpmyadmin</h2>
+            <img src="mld.png" alt="Capture d'écran du MLD sur phpMyAdmin" class="capture-ecran">
+        </div>
+
+        <div class="livrable-section">
+            <h2>3) Un fichier sql</h2>
+            <p>Cliquez sur le bouton ci-dessous pour récupérer la base de données :</p>
+            <a href="script_veto_sql.sql" download="script_veto_sql.sql" class="bouton-telecharger">
+                📥 Télécharger le script SQL
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>
