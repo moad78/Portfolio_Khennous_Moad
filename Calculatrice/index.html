@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculatrice</title>
+    <style>
+        .btn-retour {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #008b8b;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-family: Arial, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background 0.2s;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+        .btn-retour:hover { background: #005555; }
+    </style>
+</head>
+<body>
+    <a href="https://moad78.github.io/Portfolio_Khennous_Moad/index.html#projets" class="btn-retour">&#8592; Retour au portfolio</a>
+    <div id="calculatrice">
+        <input id="ecran" readonly>
+        <div id="bouton">
+            <button onclick="ajouterEcran('+')" class="operation">+</button>
+            <button onclick="ajouterEcran('7')">7</button>
+            <button onclick="ajouterEcran('8')">8</button>
+            <button onclick="ajouterEcran('9')">9</button>
+            <button onclick="ajouterEcran('-')" class="operation">-</button>
+            <button onclick="ajouterEcran('4')">4</button>
+            <button onclick="ajouterEcran('5')">5</button>
+            <button onclick="ajouterEcran('6')">6</button>
+            <button onclick="ajouterEcran('*')" class="operation">*</button>
+            <button onclick="ajouterEcran('1')">1</button>
+            <button onclick="ajouterEcran('2')">2</button>
+            <button onclick="ajouterEcran('3')">3</button>
+            <button onclick="ajouterEcran('/')" class="operation">/</button>
+            <button onclick="ajouterEcran('0')">0</button>
+            <button onclick="ajouterEcran('.')">.</button>
+            <button onclick="calculer()" class="egalite">=</button>
+            <button onclick="effacerEcran()" class="operation">C</button>
+        </div>
+    </div>
+    <script src="calcul.js"></script>
+    <div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+</body>
+</html>

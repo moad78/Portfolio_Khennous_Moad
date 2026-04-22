@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serveur Minecraft – Moad Khennous</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 40px 20px;
+        }
+        .btn-retour {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #008b8b;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background 0.2s;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+        .btn-retour:hover { background: #005555; }
+        .container {
+            max-width: 850px;
+            margin: 60px auto 0;
+            background: #16213e;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+        .header {
+            background: linear-gradient(135deg, #2d6a4f, #1b4332);
+            padding: 35px 40px;
+            border-bottom: 3px solid #52b788;
+        }
+        .header h1 { font-size: 1.8rem; color: #fff; margin-bottom: 8px; }
+        .header p { color: #b7e4c7; font-size: 0.95rem; }
+        .tag {
+            display: inline-block;
+            background: #52b788;
+            color: #1b4332;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .content { padding: 35px 40px; }
+        .section { margin-bottom: 30px; }
+        .section h2 {
+            color: #52b788;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #2d3561;
+        }
+        .section p { line-height: 1.7; color: #ccc; font-size: 0.95rem; }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .skill {
+            background: #0f3460;
+            color: #a8dadc;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .btn-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: #52b788;
+            color: #1b4332;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+        .btn-pdf:hover { background: #74c69d; }
+    </style>
+</head>
+<body>
+    <a href="https://moad78.github.io/Portfolio_Khennous_Moad/#projets" class="btn-retour">&#8592; Retour au portfolio</a>
+
+    <div class="container">
+        <div class="header">
+            <span class="tag">Système & Réseau</span>
+            <h1>🎮 Serveur Minecraft Java sous Debian</h1>
+            <p>BTS SIO 1ère année – TP Administration Système | Janvier 2026</p>
+        </div>
+        <div class="content">
+
+            <div class="section">
+                <h2>📋 Description du projet</h2>
+                <p>Déploiement complet d'un serveur <strong>Minecraft Java Edition 1.21.4</strong> sur une machine virtuelle <strong>Debian 13</strong>. Le serveur est automatisé via <strong>Systemd</strong> pour démarrer au boot et redémarrer automatiquement en cas de crash. Administration distante configurée via SSH (PuTTY) et RCON.</p>
+            </div>
+
+            <div class="section">
+                <h2>⚙️ Compétences mises en œuvre</h2>
+                <div class="skills">
+                    <span class="skill">Linux Debian 13</span>
+                    <span class="skill">Systemd</span>
+                    <span class="skill">SSH / PuTTY</span>
+                    <span class="skill">Java 21</span>
+                    <span class="skill">RCON</span>
+                    <span class="skill">Paper Server</span>
+                    <span class="skill">Plugin WorldEdit</span>
+                    <span class="skill">Pare-feu UFW</span>
+                    <span class="skill">VirtualBox</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>✅ Réalisations principales</h2>
+                <p>
+                    Installation et configuration de Java 21 · Création d'un utilisateur système dédié (<em>mcserver</em>) · Automatisation du service avec Systemd · Administration distante via RCON · Migration du moteur Vanilla vers <strong>Paper</strong> pour de meilleures performances · Installation du plugin <strong>WorldEdit</strong> · Sécurisation avec le pare-feu <strong>UFW</strong>.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>📄 Compte rendu du TP</h2>
+                <a href="Compte_Rendu_Tp_Minecraft_Khennous_Moad_1SIOB.pdf" target="_blank" class="btn-pdf">
+                    📥 Télécharger / Voir le compte rendu (PDF)
+                </a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

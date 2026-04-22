@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS Poisoning – Moad Khennous</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: #0d0d0d;
+            color: #e0e0e0;
+            padding: 40px 20px;
+        }
+        .btn-retour {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #008b8b;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background 0.2s;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+        .btn-retour:hover { background: #005555; }
+        .container {
+            max-width: 850px;
+            margin: 60px auto 0;
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.7);
+        }
+        .header {
+            background: linear-gradient(135deg, #7b0000, #3d0000);
+            padding: 35px 40px;
+            border-bottom: 3px solid #ff4444;
+        }
+        .header h1 { font-size: 1.8rem; color: #fff; margin-bottom: 8px; }
+        .header p { color: #ffaaaa; font-size: 0.95rem; }
+        .tag {
+            display: inline-block;
+            background: #ff4444;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .content { padding: 35px 40px; }
+        .section { margin-bottom: 30px; }
+        .section h2 {
+            color: #ff6666;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .section p { line-height: 1.7; color: #ccc; font-size: 0.95rem; }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .skill {
+            background: #2a0000;
+            color: #ffaaaa;
+            border: 1px solid #ff4444;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .alert-box {
+            background: #2a0000;
+            border-left: 4px solid #ff4444;
+            border-radius: 6px;
+            padding: 15px 20px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #ffcccc;
+            line-height: 1.7;
+        }
+        .alert-box strong { color: #ff6666; }
+        .btn-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: #ff4444;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+        .btn-pdf:hover { background: #cc0000; }
+    </style>
+</head>
+<body>
+    <a href="https://moad78.github.io/Portfolio_Khennous_Moad/index.html#projets" class="btn-retour">&#8592; Retour au portfolio</a>
+
+    <div class="container">
+        <div class="header">
+            <span class="tag">Cybersécurité</span>
+            <h1>🔴 Attaque par Empoisonnement DNS</h1>
+            <p>BTS SIO 1ère année – Sensibilisation cybersécurité (TRADEC) | 25 janvier 2026</p>
+        </div>
+        <div class="content">
+
+            <div class="section">
+                <h2>📋 Description du projet</h2>
+                <p>Dans le cadre d'une journée de sensibilisation à la cybersécurité organisée pour l'entreprise <strong>TRADEC</strong>, ce TP consiste à simuler une attaque par <strong>DNS Poisoning</strong>. L'objectif est de démontrer comment un attaquant peut rediriger silencieusement un utilisateur vers un site frauduleux sans qu'il ne change l'URL dans son navigateur.</p>
+            </div>
+
+            <div class="section">
+                <h2>⚙️ Compétences mises en œuvre</h2>
+                <div class="skills">
+                    <span class="skill">Cisco Packet Tracer</span>
+                    <span class="skill">DNS / BIND9</span>
+                    <span class="skill">Python</span>
+                    <span class="skill">Réseau LAN / DMZ</span>
+                    <span class="skill">Cybersécurité</span>
+                    <span class="skill">Sensibilisation</span>
+                    <span class="skill">Linux</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>⚡ Scénario de l'attaque</h2>
+                <div class="alert-box">
+                    <strong>Avant l'attaque :</strong> Le salarié accède à <code>agence.tradec.lan</code> → résolu vers <code>192.168.2.101</code> (site légitime).<br><br>
+                    <strong>Script Python exécuté :</strong> Le fichier de zone DNS <code>/etc/bind/db.tradec.lan</code> est corrompu — l'IP légitime est remplacée par <code>192.168.1.1</code> (serveur pirate).<br><br>
+                    <strong>Après l'attaque :</strong> Le salarié tape la même URL mais est redirigé vers le site piège <em>"ATTENTION : SITE PIRATÉ ! VOS DONNÉES SONT VOLÉES !"</em> sans s'en rendre compte.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🛡️ Mesures de protection présentées</h2>
+                <p>Vérification du <strong>HTTPS / cadenas</strong> · Vigilance sur les changements visuels des pages · Ne jamais ignorer les alertes de sécurité du navigateur · Distribution d'un <strong>flyer de sensibilisation</strong> aux collaborateurs.</p>
+            </div>
+
+            <div class="section">
+                <h2>📄 Compte rendu du TP</h2>
+                <a href="Compte_Rendu_TP_Sensibilisation_DNS_Poisonning_khennous_moad__1_.pdf" target="_blank" class="btn-pdf">
+                    📥 Télécharger / Voir le compte rendu (PDF)
+                </a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

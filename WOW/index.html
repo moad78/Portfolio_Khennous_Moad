@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serveur WoW – Moad Khennous</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 40px 20px;
+        }
+        .btn-retour {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #008b8b;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background 0.2s;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+        .btn-retour:hover { background: #005555; }
+        .container {
+            max-width: 850px;
+            margin: 60px auto 0;
+            background: #16213e;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+        .header {
+            background: linear-gradient(135deg, #3a0ca3, #1a0050);
+            padding: 35px 40px;
+            border-bottom: 3px solid #7b2fff;
+        }
+        .header h1 { font-size: 1.8rem; color: #fff; margin-bottom: 8px; }
+        .header p { color: #c8b1ff; font-size: 0.95rem; }
+        .tag {
+            display: inline-block;
+            background: #7b2fff;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .content { padding: 35px 40px; }
+        .section { margin-bottom: 30px; }
+        .section h2 {
+            color: #a78bfa;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #2d3561;
+        }
+        .section p { line-height: 1.7; color: #ccc; font-size: 0.95rem; }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .skill {
+            background: #0f3460;
+            color: #a8dadc;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .btn-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: #7b2fff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+        .btn-pdf:hover { background: #9d4edd; }
+    </style>
+</head>
+<body>
+    <a href="https://moad78.github.io/Portfolio_Khennous_Moad/#projets" class="btn-retour">&#8592; Retour au portfolio</a>
+
+    <div class="container">
+        <div class="header">
+            <span class="tag">Système & Réseau</span>
+            <h1>⚔️ Serveur World of Warcraft sous Docker</h1>
+            <p>BTS SIO 1ère année – TP Administration Système | Janvier 2026</p>
+        </div>
+        <div class="content">
+
+            <div class="section">
+                <h2>📋 Description du projet</h2>
+                <p>Déploiement d'une infrastructure conteneurisée complexe via <strong>Docker Compose</strong> sur une VM <strong>Debian</strong>. Le serveur <strong>AzerothCore (WoW 3.3.5a)</strong> repose sur trois conteneurs orchestrés : le WorldServer, l'AuthServer et une base de données <strong>MySQL</strong>. Administration complète via ligne de commande.</p>
+            </div>
+
+            <div class="section">
+                <h2>⚙️ Compétences mises en œuvre</h2>
+                <div class="skills">
+                    <span class="skill">Docker</span>
+                    <span class="skill">Docker Compose</span>
+                    <span class="skill">Linux Debian</span>
+                    <span class="skill">MySQL</span>
+                    <span class="skill">AzerothCore</span>
+                    <span class="skill">Administration réseau</span>
+                    <span class="skill">mysqldump</span>
+                    <span class="skill">VirtualBox</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>✅ Réalisations principales</h2>
+                <p>
+                    Installation de Docker et Docker Compose · Déploiement des conteneurs <em>WorldServer</em>, <em>AuthServer</em> et <em>Database</em> · Création de comptes joueurs et attribution des privilèges <strong>Game Master (niveau 3)</strong> · Vérification en base MySQL · Configuration du fichier <em>realmlist.wtf</em> · Sauvegarde complète via <strong>mysqldump</strong> · Extraction des fichiers de configuration critiques.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>📄 Compte rendu du TP</h2>
+                <a href="Compte_Rendue_TP_WorldOfWarcraft_Moad_Khennous_1SIOB - Copie.pdf" target="_blank" class="btn-pdf">
+                    📥 Télécharger / Voir le compte rendu (PDF)
+                </a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

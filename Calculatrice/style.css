@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+ /*  Animation du background , site  --> https://prismic.io/blog/css-background-effects */
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+#calculatrice{
+font-family: Arial, sans-serif;
+background-color: hsl(0 , 0%, 15%);
+border-radius: 15px;
+max-width: 500px;
+overflow: hidden; /* Cache tout contenu qui dépasse les limites de la calculatrice */
+}
+
+#ecran{
+    width: 100%;
+    padding: 20px;
+    font-size: 5rem;
+    text-align: left;
+    border: none;
+    background-color: hsl(0 , 0%, 20%);
+    color: white;
+}
+#bouton{
+    display: grid; /* Affichage en grille pour organiser les boutons */
+    grid-template-columns: repeat(4, 1fr); /* Permet de creer 4 colonnes de taille égale */
+    gap:10px; /* Ajoute un espace entre les boutons */
+    padding: 25px;
+}
+
+button{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px ;
+    border: none;
+    background-color: hsl(0, 0%, 30%);
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+h1{
+    position: fixed;
+    text-align: center;
+    top:20px;
+    font-size: 3rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Effet quand le curseur est au-dessus d'un bouton et au clic */
+button:hover{
+    background-color: hsl(0, 0%, 40%);
+
+}
+
+button:active{
+    background-color: rgb(250, 196, 95);
+}
+
+.operation{
+    background-color: orange;
+}
+.operation:hover{
+    background-color: rgb(250, 196, 95);
+}
+
+.operation:active{
+   background-color: rgb(87, 56, 0);
+}
+
+.egalite{
+    background-color: hsl(120, 100%, 25%);
+}
+
+.egalite:hover{
+    background-color: hsl(120, 100%, 35%);
+}
+
+.egalite:active{
+    background-color: hsl(120, 100%, 15%);  
+}
+
+ /*  Animation du background , site  --> https://prismic.io/blog/css-background-effects */
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.wave {
+    background: rgb(255 255 255 / 25%);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
+}
+
+/* responsive*/
+@media screen and (max-width: 1499px) {
+    #calculatrice{
+        max-width: 400px;
+    }
+
+    button{
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+    }
+
+    #ecran{
+        font-size: 4rem;
+        padding: 15px;
+    }
+ 
+}

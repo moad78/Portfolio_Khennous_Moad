@@ -1,0 +1,109 @@
+/*Khennous Moad 1SIOB- Mission 11 */
+
+body {
+    font-family: Arial, sans-serif;
+    background: #e5f4f6;
+    margin: 0;
+    padding: 20px;
+}
+
+.facture {
+    max-width: 1000px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.facture-entete {
+    display: flex;
+    justify-content: space-between;
+    background: #005555;
+    color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.infos-clients {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.infos-clients .bloc {
+    width: 50%;
+    background: #f5f5f5;
+    padding: 10px;
+}
+
+.tableau-facture table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.tableau-facture th,
+.tableau-facture td {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.tableau-facture th {
+    background: #008b8b;
+    color: white;
+}
+
+
+.remarques textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2.5px solid #008b8b;
+    padding: 5px;
+}
+
+.totaux {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.bloc-totaux {
+    width: 300px;
+    background: #f5f5f5;
+    padding: 10px;
+
+}
+
+.ligne-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.ligne-total input {
+    width: 120px;
+    text-align: right;
+}
+
+.solde input {
+    font-weight: bold;
+}
+
+.actions {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.actions button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background: #008b8b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.actions button:hover {
+    background: #005555;
+
+}
